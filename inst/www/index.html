@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,10 +11,12 @@
 </head>
 <body>
   <div class="container">
-    <h1>Rossmann</h1>
+    <h1>Simple scoring engine</h1>
 
-    <p>歷史數據</p>
+    <p>This app illustrates how to deploy a predictive model, a.k.a. scoring engine using opencpu. This is done by creating an R package which includes a model object, and a function that uses R's <code>predict</code> to "score" new cases based on predictor variables.</p>
     
+    <p>The <a href="../">tvscore</a> package includes a data object <a href="../data/tv_model">tv_model</a> and a <a href="../R/tv">scoring function</a> to predicts hours of watching tv from age and marital status. The model was created using this script: <a href="../tv/createmodel.R"><code>createmodel.R</code></a>. A simple viz of the model looks like this:</p>
+
     <img class="center-block img-rounded img-responsive" src="../tv/viz.png">
 
     <div class="page-header">
