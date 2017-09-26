@@ -14,10 +14,5 @@
 #   Test Package:              'Ctrl + Shift + T'
 
 hello <- function() {
-  if(StoreId == ""){
-    stop("您的沒有輸入ID")
-  }
-  list(
-    message = paste("您的ID為", StoreId)
-  )
+  print("Hello, world!")
 }
