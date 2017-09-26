@@ -13,6 +13,6 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-hello <- function() {
-  print("Hello, world!")
+hello <- function() (StoreId = ""){
+  message = paste("您的ID為", StoreId)
 }
