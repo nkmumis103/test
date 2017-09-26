@@ -11,62 +11,105 @@
 </head>
 <body>
   <div class="container">
-    <h1>Simple scoring engine</h1>
-
-    <p>This app illustrates how to deploy a predictive model, a.k.a. scoring engine using opencpu. This is done by creating an R package which includes a model object, and a function that uses R's <code>predict</code> to "score" new cases based on predictor variables.</p>
-    
-    <p>The <a href="../">tvscore</a> package includes a data object <a href="../data/tv_model">tv_model</a> and a <a href="../R/tv">scoring function</a> to predicts hours of watching tv from age and marital status. The model was created using this script: <a href="../tv/createmodel.R"><code>createmodel.R</code></a>. A simple viz of the model looks like this:</p>
-
-    <img class="center-block img-rounded img-responsive" src="../tv/viz.png">
-
-    <div class="page-header">
-      <h2>Scoring example with curl</h2>
-    </div>
-
-    <p>To call the <code>tv</code> function with <code>curl</code> using basic <a href="https://www.opencpu.org/api.html#api-json">JSON RPC</a>:</p>
-
-    <pre class="highlight" id="curlcode">
-curl https://public.opencpu.org/ocpu/github/opencpu/tvscore/R/tv/json \
--H "Content-Type: application/json" \
--d '{"input" : [ {"age":26, "marital" : "MARRIED"}, {"age":41, "marital":"DIVORCED"}, {"age":53, "marital":"NEVER MARRIED"} ]}'
-</pre>
-
-    <div class="page-header">
-      <h2>Scoring values with JavaScript</h2>
-    </div>
-
-    <p>In this form, we use the <code>opencpu.js</code> client to score a bunch of values using basic ajax.</p>
-
-    <form class="form-inline" role="form">
-      <table class="table table-bordered">
-        <thead>
-          <tr><th>Age</th><th>Marital Status</th><th>TV score</th></tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      <div class="text-center">
-        <button type="button" id="scorebutton" class="btn btn-primary btn-lg">Score all values!</button>
-      </div>
-    </form>
-
-    <div class="page-header">
-      <h2>Batch score CSV file</h2>
-    </div>
-
-    <p>The <a href="../R/tv">scoring function</a> was designed to accept both data as well as a CSV file as input. The example below illustrates batch scoring using CSV files for both input and output. The CSV file must at least contain columns with values for <code>age</code> and <code>marital</code> (<a href="../tv/testdata.csv">example data</a>).</p>
-
-    <form role="form">
-      <div class="form-group">
-        <img src="spinner.gif" class="spinner" style="display:none;" />
-        <input class="btn btn-primary btn-lg" type="file" id="csvfile"> 
-        <br> 
-        <a class="btn btn-success btn-lg hide" target="_blank" id="outputcsv">Output CSV</a>
-      </div>
-      
-    </form>
-
-  </div>
+    <h1>Rossmann</h1>
+<div class="container">
+		<!-- <nav class="navbar " id="topNav">
+		</nav> -->
+		<div class="plotdiv">
+			<div class="col-sm-12 plottitle">
+				歷史銷售統計圖表
+			</div>
+			<div class="historyPlot">
+				<img src="img/Rplot.png"></img>
+			</div>
+		</div>
+		<div class="inputdiv">
+			<div class="col-sm-12 predtitle">
+				銷售預測
+			</div>
+			<div class="col-sm-4">
+				1.店家ID
+				<input class="form-control" type="number" id="StoreId">
+				2.選擇星期
+				<select class="form-control" id="DayOfWeek">
+					<option></option>
+					<option>星期一</option>
+					<option>星期二</option>
+					<option>星期三</option>
+					<option>星期四</option>
+					<option>星期五</option>
+					<option>星期六</option>
+					<option>星期日</option>
+				</select>
+				3.當日日期
+				<input class="form-control" type="date" id="Date">
+				4.當日是否促銷
+				<select class="form-control" id="Promo">
+					<option></option>
+					<option>是</option>
+					<option>否</option>
+				</select>
+				5.是否為國定假日
+				<select class="form-control" id="StateHoliday">
+					<option></option>
+					<option>是</option>
+					<option>否</option>
+				</select>
+			</div>
+			<div class="col-sm-4">
+				6.是否為學校休假日
+				<select class="form-control" id="SchoolHoliday">
+					<option></option>
+					<option>是</option>
+					<option>否</option>
+				</select>
+				7.商店模式
+				<select class="form-control" id="StoreType">
+					<option></option>
+					<option>a</option>
+					<option>b</option>
+					<option>c</option>
+					<option>d</option>
+				</select>
+				8.分類
+				<select class="form-control" id="Assortment">
+					<option></option>
+					<option>a</option>
+					<option>b</option>
+					<option>c</option>
+				</select>
+				9.與競爭對手店面距離(公尺)
+				<input class="form-control" type="number" id="CompetitionDistance">
+				10.競爭對手開店年份(西元)
+				<input class="form-control" type="number" id="CompetitionOpenSinceYear">
+			</div>
+			<div class="col-sm-4">
+				11.競爭對手開店月份
+				<input class="form-control" type="number" id="CompetitionOpenSinceMonth">
+				12.是否持續銷售
+				<select class="form-control" id="Promo2">
+					<option></option>
+					<option>是</option>
+					<option>否</option>
+				</select>
+				13.持續銷售開始年份
+				<input class="form-control" type="number" id="Promo2SinceYear">
+				14.持續銷售開始周
+				<input class="form-control" type="number" id="Promo2SinceWeek">
+				15.持續銷售每次間隔的開始月份
+				<input class="form-control" type="number" id="PromoInterval">
+			</div>
+			<div class="col-sm-12 submitdiv">
+				<button type="submit" id="submit" class="btn btn-primary">開始預測</button>
+			</div>
+			<div class="col-sm-12 preddiv">
+				<label class="pred" id="output">
+				
+				</label>
+				<!-- <textarea class="form-control" id="exampleTextarea" rows="4"></textarea> -->
+			</div>
+		</div>
+	</div>
 
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
