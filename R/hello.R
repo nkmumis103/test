@@ -13,6 +13,11 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-hello <- function() (StoreId = ""){
-  message = paste("您的ID為", StoreId)
+hello <- function(StoreId = ""){
+  if(StoreId == ""){
+    stop("Tell me your name!")
+  }
+  list(
+    message = paste("hello", StoreId, "! This is")
+  )
 }
