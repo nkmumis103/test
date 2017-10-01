@@ -5,10 +5,38 @@ $(document).ready(function(){
         
         //read the value for 'myname'
         var StoreId = $("#StoreId").val();
+		var DayOfWeek = $("#DayOfWeek").val();
+		var Date = $("#Date").val();
+		var Promo = $("#Promo").val();
+		var Open = $("#Open").val();
+		var SchoolHoliday = $("#SchoolHoliday").val();
+		var StoreType = $("#StoreType").val();
+		var Assortment = $("#Assortment").val();
+		var CompetitionDistance = $("#CompetitionDistance").val();
+		var CompetitionOpenSinceYear = $("#CompetitionOpenSinceYear").val();
+		var CompetitionOpenSinceMonth = $("#CompetitionOpenSinceMonth").val();
+		var Promo2 = $("#Promo2").val();
+		var Promo2SinceYear = $("#Promo2SinceYear").val();
+		var Promo2SinceWeek = $("#Promo2SinceWeek").val();
+		var PromoInterval = $("#PromoInterval").val();
         
         //perform the request
-        var req = ocpu.rpc("hello", {
-          StoreId : StoreId
+        var req = ocpu.rpc("rossmann", {
+          StoreId : StoreId,
+		  DayOfWeek : DayOfWeek,
+		  Date : Date,
+		  Promo : Promo,
+		  Open : Open,
+		  SchoolHoliday : SchoolHoliday,
+		  StoreType : StoreType,
+		  Assortment : Assortment,
+		  CompetitionDistance : CompetitionDistance,
+		  CompetitionOpenSinceYear : CompetitionOpenSinceYear,
+		  CompetitionOpenSinceMonth : CompetitionOpenSinceMonth,
+		  Promo2 : Promo2,
+		  Promo2SinceYear : Promo2SinceYear,
+		  Promo2SinceWeek : Promo2SinceWeek,
+		  PromoInterval : PromoInterval
         }, function(output){
           $("#output").text(output.message);
         });
