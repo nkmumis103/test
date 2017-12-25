@@ -4,31 +4,36 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>RSR</title>
+	<title>RSR銷售預測系統</title>
 	
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" href="mystyle.css">
+	<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
 	<div class="container">
 		<!-- <nav class="navbar " id="topNav">
 		</nav> -->
+		<div class="logo">
+			<img src="img/logo.png"/>
+		</div>
 		<div class="plotdiv">
 			<div class="col-sm-12 plottitle">
 				歷史銷售統計圖表
 			</div>
 			<div class="historyPlot">
-				<img src="Rplot.png">
+				<a href="plot.html" target="_blank"><img src="img/Rplot.png"/></a>
+				<h4>點擊圖片進入歷年動態圖表↑</h4>
 			</div>
 		</div>
 		<div class="inputdiv">
 			<div class="col-sm-12 predtitle">
 				銷售預測
 			</div>
+			<form>
 			<div class="col-sm-4">
 				1.店家ID
-				<input class="form-control" type="number" id="StoreId" min="1">
-				2.選擇星期
+				<input class="form-control" type="number" id="Store" min="1" required="required">
+				<!-- 2.選擇星期
 				<select class="form-control" id="DayOfWeek">
 					<option selected disabled>請選擇</option>
 					<option value="1">一</option>
@@ -38,79 +43,176 @@
 					<option value="5">五</option>
 					<option value="6">六</option>
 					<option value="7">七</option>
-				</select>
-				3.當日日期
-				<input class="form-control" type="date" id="Date">
-				4.當日是否促銷
-				<select class="form-control" id="Promo">
+				</select> -->
+				2.當日日期
+				<input class="form-control" type="date" id="Date" required="required">
+				3.當日是否促銷
+				<select class="form-control" id="Promo" required="required">
 					<option selected disabled>請選擇</option>
 					<option value="1">是</option>
 					<option value="0">否</option>
 				</select>
-				5.當日是否開店
-				<select class="form-control" id="Open">
+				4.當日是否開店
+				<select class="form-control" id="Open" required="required">
 					<option selected disabled>請選擇</option>
 					<option value="1">是</option>
 					<option value="0">否</option>
 				</select>
 			</div>
 			<div class="col-sm-4">
-				6.是否為學校休假日
-				<select class="form-control" id="SchoolHoliday">
+				5.是否為學校休假日
+				<select class="form-control" id="SchoolHoliday" required="required">
 					<option selected disabled>請選擇</option>
 					<option value="1">是</option>
 					<option value="0">否</option>
 				</select>
-				7.商店模式
-				<select class="form-control" id="StoreType">
+				6.商店模式
+				<select class="form-control" id="StoreType" required="required">
 					<option selected disabled>請選擇</option>
-					<option value="a">a</option>
-					<option value="b">b</option>
-					<option value="c">c</option>
-					<option value="d">d</option>
+					<option value="1">a</option>
+					<option value="2">b</option>
+					<option value="3">c</option>
+					<option value="4">d</option>
 				</select>
-				8.分類
-				<select class="form-control" id="Assortment">
+				7.分類
+				<select class="form-control" id="Assortment" required="required">
 					<option selected disabled>請選擇</option>
-					<option value="a">a</option>
-					<option value="b">b</option>
-					<option value="c">c</option>
+					<option value="1">a</option>
+					<option value="2">b</option>
+					<option value="3">c</option>
 				</select>
-				9.與競爭對手店面距離(公尺)
-				<input class="form-control" type="number" id="CompetitionDistance" min="0">
-				10.競爭對手開店年份(西元)
-				<input class="form-control" type="number" id="CompetitionOpenSinceYear" min="1911">
+				8.與競爭對手店面距離(公尺)
+				<input class="form-control" type="number" id="CompetitionDistance" min="0" required="required">
 			</div>
 			<div class="col-sm-4">
-				11.競爭對手開店月份
-				<input class="form-control" type="number" id="CompetitionOpenSinceMonth" min="1" max="12">
-				12.是否持續銷售
-				<select class="form-control" id="Promo2">
+				9.競爭對手開店年份(西元)
+				<input class="form-control" type="number" id="CompetitionOpenSinceYear" min="1911" required="required">
+				10.競爭對手開店月份
+				<input class="form-control" type="number" id="CompetitionOpenSinceMonth" min="1" max="12" required="required">
+				11.是否持續促銷
+				<select class="form-control" id="Promo2" required="required">
 					<option selected disabled>請選擇</option>
-					<option value="1" >是</option>
+					<option value="1">是</option>
 					<option value="0">否</option>
 				</select>
-				13.持續銷售開始年份
+				<!-- 13.持續促銷開始年份
 				<input class="form-control" type="number" id="Promo2SinceYear" min="1911">
-				14.持續銷售開始周
+				14.持續促銷開始周
 				<input class="form-control" type="number" id="Promo2SinceWeek" min="1">
-				15.持續銷售每次間隔的開始月份
-				<input class="form-control" type="number" id="PromoInterval" min="1" max="12">
+				15.持續促銷每次間隔的開始月份
+				<input class="form-control" type="number" id="PromoInterval" min="1" max="12"> -->
 			</div>
 			<div class="col-sm-12 submitdiv">
-				<button type="submit" class="btn btn-primary" id="submit">開始預測</button>
+				<button type="submit" class="btn btn-primary" id="submit">當日預測</button>
+				<button type="submit" class="btn btn-primary" id="submit_fut">未來七天預測</button>
 			</div>
+			</form>
 			<div class="col-sm-12 preddiv">
-				<label class="pred" id="output">
-				
+				<label class="pred" id="output_sale" style="display:none;">
+					
+				</label>
+				<label class="pred" id="output_plot" style="display:none;">
+					
 				</label>
 				<!-- <textarea class="form-control" id="exampleTextarea" rows="4"></textarea> -->
 			</div>
 		</div>
+		
+		<div class="inputdiv">
+			<div class="col-sm-12 predtitle">
+				上傳資料
+			</div>
+			<div class="col-sm-4">
+				1.店家ID
+				<input class="form-control" type="number" id="Store_push" min="1">
+				<!-- 2.選擇星期
+				<select class="form-control" id="DayOfWeek">
+					<option selected disabled>請選擇</option>
+					<option value="1">一</option>
+					<option value="2">二</option>
+					<option value="3">三</option>
+					<option value="4">四</option>
+					<option value="5">五</option>
+					<option value="6">六</option>
+					<option value="7">七</option>
+				</select> -->
+				2.當日日期
+				<input class="form-control" type="date" id="Date_push">
+				3.當日是否促銷
+				<select class="form-control" id="Promo_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+				4.當日是否開店
+				<select class="form-control" id="Open_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+			</div>
+			<div class="col-sm-4">
+				5.是否為學校休假日
+				<select class="form-control" id="SchoolHoliday_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+				6.商店模式
+				<select class="form-control" id="StoreType_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">a</option>
+					<option value="2">b</option>
+					<option value="3">c</option>
+					<option value="4">d</option>
+				</select>
+				7.分類
+				<select class="form-control" id="Assortment_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">a</option>
+					<option value="2">b</option>
+					<option value="3">c</option>
+				</select>
+				8.與競爭對手店面距離(公尺)
+				<input class="form-control" type="number" id="CompetitionDistance_push" min="0">
+			</div>
+			<div class="col-sm-4">
+				9.競爭對手開店年份(西元)
+				<input class="form-control" type="number" id="CompetitionOpenSinceYear_push" min="1911">
+				10.競爭對手開店月份
+				<input class="form-control" type="number" id="CompetitionOpenSinceMonth_push" min="1" max="12">
+				11.是否持續促銷
+				<select class="form-control" id="Promo2_push">
+					<option selected disabled>請選擇</option>
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+				12.當日銷售額
+				<input class="form-control" type="number" id="Sales">
+				<!-- 13.持續促銷開始年份
+				<input class="form-control" type="number" id="Promo2SinceYear" min="1911">
+				14.持續促銷開始周
+				<input class="form-control" type="number" id="Promo2SinceWeek" min="1">
+				15.持續促銷每次間隔的開始月份
+				<input class="form-control" type="number" id="PromoInterval" min="1" max="12"> -->
+			</div>
+			<div class="col-sm-12 submitdiv">
+				<button type="submit" class="btn btn-primary" id="push">傳送</button>
+			</div>
+		</div>
 	</div>
-	<script src="jquery.min.js"></script>
-	<script src="bootstrap.min.js"></script>
-	<script src="opencpu.js"></script>
-	<script src="predict.js"></script>
+	<div class="gotop">
+		<i class="fa fa-chevron-up" aria-hidden="true"></i>
+	</div>
+	<div class="gobottom">
+		上傳資料↓
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/a2a1b3165b.js"></script>
+	<script src="js/opencpu.js"></script>
+	<script src="js/action.js"></script>
+	<script src="js/predict.js"></script>
+	<script src="js/insertData.js"></script>
 </body>
 </html>

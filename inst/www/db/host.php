@@ -1,0 +1,9 @@
+<?php
+//資料庫
+	define('DB_NAME','id3298469_mis_rossmann');
+	define('DB_HOST','localhost');//nkmumistop103.000webhostapp.com
+	define('DB_USER','id3298469_nkmumistop103');
+	define('DB_PW','1234567890');
+	//define('DB_PORT','3306');
+	//define('DB_ENGINE','mysql');
+?>

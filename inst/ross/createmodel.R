@@ -2,10 +2,12 @@ rm(list=ls())
 
 library(readr)
 library(xgboost)
+library(ggplot2)
 
 download.file("https://raw.githubusercontent.com/nkmumis103/rossmann/master/inst/ross/train.csv", destfile="train.csv")
 #=read_csv("D:/input/test.csv")
 #store=read_csv("D:/input/store.csv")
+#names(train)[1]
 
 train=merge(train,store)
 test=merge(test,store)

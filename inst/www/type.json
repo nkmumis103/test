@@ -1,0 +1,46 @@
+{
+    "dataname": [
+        "Store",
+        "DayOfWeek",
+        "today",
+        "Promo",
+        "Open",
+        "SchoolHoliday",
+        "StoreType",
+        "Assortment",
+        "CompetitionDistance",
+        "CompetitionOpenSinceYear",
+        "CompetitionOpenSinceMonth",
+        "Promo2",
+        "Promo2SinceYear",
+        "Promo2SinceWeek",
+        "PromoInterval",
+        "Sales"
+    ],
+    "type": [
+        "input",
+        "input",
+        "select",
+        "select",
+        "select",
+        "select",
+        "select",
+        "input",
+        "input",
+        "input",
+        "select"
+    ],
+    "datatype": [
+        "number",
+        "date",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "number",
+        "number",
+        "number",
+        ""
+    ]
+}
